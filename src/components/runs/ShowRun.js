@@ -19,12 +19,13 @@ const ShowRun = (props) => {
     const [updated, setUpdated] = useState(false)
     const {user, msgAlert} = props
     const { id } = useParams()
+    console.log('this is the req.params.id', useParams())
     const navigate = useNavigate()
     console.log('id in showRun', id)
     // empty dependency array in useEffect to act like component did mount
     useEffect(() => {
         getOneRun(id)
-            .then(res => setRun(res.data.pet))
+            .then(res => setRun(res.data.run))
             .then(() => {
                 msgAlert({
                     heading: 'Here is the run!',
@@ -32,13 +33,13 @@ const ShowRun = (props) => {
                     variant: 'success',
                 })
             })
-            // .catch(() => {
-            //     msgAlert({
-            //         heading: 'No run found',
-            //         message: showRunFailure,
-            //         variant: 'danger',
-            //     })
-            // })
+            .catch(() => {
+                msgAlert({
+                    heading: 'No run found',
+                    message: showRunFailure,
+                    variant: 'danger',
+                })
+            })
     }, [updated])
 
     const removeTheRun = () => {
@@ -88,9 +89,6 @@ const ShowRun = (props) => {
                         <Card.Text>
                             <small>description: {run.description}</small><br/>
                             <small>mileage: {run.mileage}</small><br/>
-                            {/* <small>
-                                Adoptable: {pet.adoptable ? 'yes' : 'no'}
-                            </small> */}
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
