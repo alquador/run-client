@@ -29,12 +29,6 @@ const RunForm = (props) => {
                     name='date'
                     onChange={handleChange}
                 />
-                {/* <Form.Check 
-                    label='is this pet adoptable?'
-                    name='adoptable'
-                    defaultChecked={pet.adoptable}
-                    onChange={handleChange}
-                /> */}
                 <Button type='submit'>Submit</Button>
             </Form>
         </Container>
