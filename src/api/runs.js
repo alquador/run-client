@@ -28,7 +28,7 @@ export const updateRun = (user, updatedRun) => {
     console.log('user', user)
     console.log('this is newRun', updatedRun)
     return axios({
-        url: `${apiUrl}/runs/${updatedRun.id}`,
+        url: `${apiUrl}/runs/${updatedRun._id}`,
         method: 'PATCH',
         headers: {
             Authorization: `Token token=${user.token}`
