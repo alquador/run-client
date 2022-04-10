@@ -4,7 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner, Container, Card, Button } from 'react-bootstrap'
 import {showRunSuccess, showRunFailure} from '../shared/AutoDismissAlert/messages'
 import EditRunModal from './EditRunModal'
-//import ShowToy from '../toys/ShowToy'
+
+//import GiveToyModal from '../toys/GiveToyModal'
 
 const cardContainerLayout = {
     display: 'flex',
@@ -16,10 +17,10 @@ const ShowRun = (props) => {
 
     const [run, setRun] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
+    const [runModalOpen, setRunModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const {user, msgAlert} = props
     const { id } = useParams()
-    console.log('this is the req.params.id', useParams())
     const navigate = useNavigate()
     console.log('id in showRun', id)
     // empty dependency array in useEffect to act like component did mount
@@ -40,10 +41,10 @@ const ShowRun = (props) => {
                     variant: 'danger',
                 })
             })
-    }, [updated])
+    }, [updated, id])
 
     const removeTheRun = () => {
-        removeRun(user, run.id)
+        removeRun(user, run._id)
             .then(() => {
                 msgAlert({
                     heading: 'run politely removed!',
@@ -51,7 +52,7 @@ const ShowRun = (props) => {
                     variant: 'success',
                 })
             })
-            .then(() => {navigate(`/`)})
+            .then(() => {navigate(`/runs`)})
             .catch(() => {
                 msgAlert({
                     heading: 'something went wrong',
@@ -60,12 +61,19 @@ const ShowRun = (props) => {
                 })
             })
     }
-    //for subdocument later
+
+    
     // let toyCards
-    // if (pet) {
+    
+    // if (run) {
     //     if (pet.toys.length > 0) {
     //         toyCards = pet.toys.map(toy => (
-    //             <ShowToy key={toy.id} toy={toy}/>
+    //             // need to pass all props needed for updateToy func in edit modal
+    //             <ShowToy 
+    //                 key={toy._id} toy={toy} pet={pet} 
+    //                 user={user} msgAlert={msgAlert}
+    //                 triggerRefresh={() => setUpdated(prev => !prev)}
+    //             />
     //         ))
     //     }
     // }
@@ -80,18 +88,22 @@ const ShowRun = (props) => {
         )
     }
 
+    if (run) {
     return (
         <>
             <Container className="fluid">
                 <Card>
-                    <Card.Header>{run.date}</Card.Header>
+                    <Card.Header>{run.description}</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <small>description: {run.description}</small><br/>
-                            <small>mileage: {run.mileage}</small><br/>
+                            <small>Mileage: {run.mileage}</small><br/>
+                            <small>Date: {run.date}</small><br/>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        {/* <Button onClick={() => setToyModalOpen(true)} className="m-2" variant="info">
+                            Give Pet a Toy?
+                        </Button> */}
                         <Button onClick={() => setModalOpen(true)} className="m-2" variant="warning">
                             Edit Run
                         </Button>
@@ -114,8 +126,17 @@ const ShowRun = (props) => {
                 updateRun={updateRun}
                 handleClose={() => setModalOpen(false)}
             />
+            {/* <GiveToyModal
+                pet={pet}
+                show={toyModalOpen}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setToyModalOpen(false)}
+            /> */}
         </>
     )
+    }
 }
 
 export default ShowRun

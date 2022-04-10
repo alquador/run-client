@@ -56,11 +56,11 @@ const IndexRuns = (props) => {
         runCards = runs.map(run => (
             // one method of styling, usually reserved for a single style
             // we can use inline, just like in html
-            <Card key={run.id} style={{ width: '30%' }} className="m-2">
+            <Card key={run._id} style={{ width: '30%' }} className="m-2">
                 <Card.Header>Miles ran: {run.mileage}</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                        <Link to={`/runs/${run.id}`}>View {run.description}</Link>
+                        <Link to={`/runs/${run._id}`}>View {run.description}</Link>
                     </Card.Text>
                 </Card.Body>
             </Card>

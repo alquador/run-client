@@ -42,7 +42,7 @@ const CreateRun = (props) => {
 
         createRun(user, run)
             // if create is successful, we should navigate to the show page
-            .then(res => {navigate(`/runs/${res.data.run.id}`)})
+            .then(res => {navigate(`/runs/${res.data.run._id}`)})
             // then we send a success message
             .then(() =>
                 msgAlert({
