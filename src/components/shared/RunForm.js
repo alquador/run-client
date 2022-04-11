@@ -20,6 +20,7 @@ const RunForm = (props) => {
                     placeholder="how many miles did you run today?"
                     value={run.mileage}
                     name='mileage'
+                    type="number"
                     onChange={handleChange}
                 />
                 <Form.Label>Date</Form.Label>

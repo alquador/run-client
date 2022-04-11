@@ -7,7 +7,7 @@ import RunForm from '../shared/RunForm'
 
 const CreateRun = (props) => {
     const {user, msgAlert} = props
-    console.log('user in create', user)
+    //console.log('user in create', user)
     const navigate = useNavigate()
     // we'll need two states
     const [run, setRun] = useState({description: '', mileage: '', date: ''})

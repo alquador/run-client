@@ -17,7 +17,7 @@ const ShowRun = (props) => {
 
     const [run, setRun] = useState(null)
     const [modalOpen, setModalOpen] = useState(false)
-    const [runModalOpen, setRunModalOpen] = useState(false)
+    //const [runModalOpen, setRunModalOpen] = useState(false)
     const [updated, setUpdated] = useState(false)
     const {user, msgAlert} = props
     const { id } = useParams()

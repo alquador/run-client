@@ -22,7 +22,7 @@ const EditRunModal = (props) => {
             const updatedValue = { [name]: value }
 
             // console.log('prevRun', prevRun)
-            // console.log('updatedRun', updatedRun)
+             console.log('updatedRun', updatedValue)
 
             return {...prevRun, ...updatedValue}
         })
@@ -43,7 +43,7 @@ const EditRunModal = (props) => {
     }
 
     return (
-        //this is the pop up that displays the adventure form for editing
+        //this is the pop up that displays the run form for editing
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
