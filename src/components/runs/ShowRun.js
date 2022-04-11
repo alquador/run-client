@@ -62,22 +62,6 @@ const ShowRun = (props) => {
             })
     }
 
-    
-    // let toyCards
-    
-    // if (run) {
-    //     if (pet.toys.length > 0) {
-    //         toyCards = pet.toys.map(toy => (
-    //             // need to pass all props needed for updateToy func in edit modal
-    //             <ShowToy 
-    //                 key={toy._id} toy={toy} pet={pet} 
-    //                 user={user} msgAlert={msgAlert}
-    //                 triggerRefresh={() => setUpdated(prev => !prev)}
-    //             />
-    //         ))
-    //     }
-    // }
-
     if (!run) {
         return (
             <Container fluid className="justify-content-center">
